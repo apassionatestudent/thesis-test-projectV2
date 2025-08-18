@@ -1,5 +1,11 @@
 function Register() {
-  return <div>Register Page</div>;
+  return (
+    <>
+      <form>
+        <h1>Reister Form</h1>
+      </form>
+    </>
+  );
 }
 
 export default Register;

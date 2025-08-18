@@ -1,0 +1,63 @@
+$clr-err: red;
+$clr-primary: green;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+@font-face {
+  font-family: "qanelas-light";
+  src: url("../../assets/fonts/qanelas-soft-ultra-light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "qanelas-medium";
+  src: url("../../assets/fonts/qanelas-soft-medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "qanelas-bold";
+  src: url("../../assets/fonts/qanelas-soft-black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "qanelas-bold";
+  src: url("../../assets/fonts/qanelas-soft-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "qanelas-heavy";
+  src: url("../../assets/fonts/qanelas-soft-heavy.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "db";
+  src: url("../../assets//fonts/dba/Debata-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "delight-bold";
+  src: url("../../assets/fonts/delight/delight-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "delight-medium";
+  src: url("../../assets/fonts/delight/delight-medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "delight-light";
+  src: url("../../assets/fonts/delight/delight-light.otf") format("opentype");
+}
+
+body {
+  font-family: "delight-medium";
+  font-size: 14px;
+}

@@ -1,0 +1,140 @@
+@forward "../global/index";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 400vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-container {
+  width: 93%;
+  margin-inline: auto;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    position: relative;
+    z-index: 10000;
+    img {
+      width: 30px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .menu-container.active {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: rgb(245, 245, 245);
+      width: 270px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      z-index: 100;
+      display: flex;
+
+      ul {
+        margin-top: 8.7rem;
+        padding: 1.2rem 0.6rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+          rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: initial;
+        width: 100%;
+
+        li {
+          padding: 0.5rem 0.6rem;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.7rem;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.7s, box-shadow 0.7s;
+          outline: none;
+        }
+
+        li.active {
+          background-color: rgb(255, 255, 255);
+          // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          //   rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+            rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        }
+
+        img {
+          display: block;
+        }
+      }
+
+      li img {
+        width: 21px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 15px;
+        color: rgb(53, 53, 53);
+      }
+    }
+  }
+
+  .menu-container {
+    display: flex;
+    align-items: center;
+    display: none;
+
+    ul {
+      align-items: center;
+      display: flex;
+      gap: 2rem;
+    }
+
+    img {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .nav-container {
+    button {
+      display: none;
+    }
+    .menu-container.active {
+      ul > :last-child {
+        background-color: none;
+      }
+    }
+
+    .menu-container {
+      display: flex;
+
+      ul > :last-child {
+        padding: 0.4em 1.8rem;
+        border-radius: 6px;
+        background-color: rgb(85, 193, 209);
+      }
+    }
+  }
+}
+
+button {
+  background: none;
+  border: none;
+}

@@ -12,6 +12,30 @@ a {
   color: inherit;
 }
 
+nav {
+  background: initial;
+  backdrop-filter: initial;
+  position: initial;
+  inset: 0;
+  z-index: 1000;
+
+  button {
+    z-index: 2000;
+  }
+}
+
+nav:has(.menu-container.active) {
+  background: rgba(0, 0, 0, 0.259);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  button {
+    z-index: 2000;
+  }
+}
+
 .nav-container {
   width: 93%;
   margin-inline: auto;
@@ -30,9 +54,6 @@ a {
 
   @media (max-width: 600px) {
     .menu-container.active {
-      position: fixed;
-      top: 0;
-      left: 0;
       height: 100%;
       background-color: rgb(245, 245, 245);
       width: 270px;
@@ -112,7 +133,20 @@ a {
 }
 
 @media (min-width: 600px) {
+  nav:has(.menu-container.active) {
+    background: initial;
+    backdrop-filter: initial;
+    position: initial;
+    inset: 0;
+    z-index: 1000;
+
+    button {
+      z-index: 2000;
+    }
+  }
+
   .nav-container {
+    justify-content: flex-end;
     button {
       display: none;
     }

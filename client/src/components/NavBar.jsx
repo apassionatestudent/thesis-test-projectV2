@@ -6,6 +6,7 @@ import home from "../assets/icons/home.png";
 import info from "../assets/icons/info.png";
 import phone from "../assets/icons/phone.png";
 import login from "../assets/icons/user-circle.png";
+import close from "../assets/icons/x.png";
 import { within } from "@testing-library/react";
 import { useState } from "react";
 
@@ -15,45 +16,33 @@ function Navbar() {
   const [current, setCurrent] = useState("button");
   const menuContainer = document.querySelector(".menu-container");
 
+  const handleScroll = () => {
+    const body = document.querySelector("body");
+    isActive
+      ? (body.style.overflow = "initial")
+      : (body.style.overflow = "hidden");
+  };
+
   const handleMenu = (e) => {
-    /*
-    if (isActive && !e.target.matches(".menu-container")) {
-      setIsActive(false);
-    }
-
-    menuContainer.style.backgroundColor = "red";
-
-    if (isActive && menuContainer.classList.contains("active")) {
-      window.addEventListener("click", (e) => {
-        let target = e.target;
-
-         if (!target.matches(".menu-container")) {
-           setIsActive(true);
-
-          console.log("Closed");
-        }
-
-        if (!target.matches(".menu-container")) {
-          setIsActive(false);
-          console.log("flase");
-          return;
-        }
-
-        setIsActive(true);
-      });
-
-      console.log(isActive);
-    }
-    */
-
     const menuContainer =
       e.target.parentElement.parentElement.querySelector(".menu-container");
 
     menuContainer.classList.toggle("active");
 
+    handleScroll();
+
     isActive ? setIsActive(false) : setIsActive(true);
 
-    console.log(menuContainer);
+    if (isActive) return;
+
+    window.addEventListener("click", (e) => {
+      if (e.target.matches("nav")) {
+        const body = document.querySelector("body");
+        body.style.overflow = "initial";
+        console.log("close me");
+        setIsActive(false);
+      }
+    });
   };
 
   const handleClick = (e) => {
@@ -68,17 +57,23 @@ function Navbar() {
 
     const a = li.querySelector("a");
 
-    if (a) a.click();
+    if (a) {
+      a.click();
+      setIsActive(false);
+      handleScroll();
+    }
   };
 
   return (
     <div className="nav-container">
       <button onClick={(e) => handleMenu(e)}>
-        <img src={isActive ? login : menu} alt="icon" />
+        <img src={!isActive ? menu : close} alt="icon" />
       </button>
 
       <nav>
-        <div className={isActive ? "menu-container active" : "menu-container"}>
+        <div
+          className={!isActive ? "menu-container " : "menu-container active"}
+        >
           <ul onClick={(e) => handleClick(e)}>
             <li>
               <img src={home} alt="" />

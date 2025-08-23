@@ -59,6 +59,9 @@ function Navbar() {
 
     if (a) {
       a.click();
+    }
+
+    if (a && isActive) {
       setIsActive(false);
       handleScroll();
     }

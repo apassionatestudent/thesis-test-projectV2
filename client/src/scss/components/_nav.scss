@@ -1,4 +1,6 @@
 @forward "../global/index";
+@use "../util" as *;
+
 * {
   box-sizing: border-box;
 }
@@ -158,7 +160,8 @@ nav:has(.menu-container.active) {
       ul > :last-child {
         padding: 0.4em 1.8rem;
         border-radius: 6px;
-        background-color: rgb(85, 193, 209);
+        background-color: $clr-primary-800;
+        color: $clr-neutral-100;
       }
     }
   }

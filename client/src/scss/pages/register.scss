@@ -1,0 +1,132 @@
+@use "../util/config" as *;
+@forward "../global";
+
+body {
+  background-color: $clr-neutral-50;
+  min-height: 300vh;
+}
+
+$register-box: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+border {
+  border: 1px solid red;
+
+  > * {
+    border: 2px solid green;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.register-account {
+  display: grid;
+  place-items: center;
+  min-height: 80vh;
+  color: $clr-neutral-500;
+
+  form {
+    h1 {
+      margin-bottom: 1.4rem;
+      color: $clr-neutral-900;
+    }
+  }
+
+  > div {
+    width: 84%;
+    max-width: 2000px;
+    border-radius: 8px;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .box.input {
+    > :first-child {
+      position: relative;
+      padding: 1.7rem 1.2rem;
+      border: 1.5px solid transparent;
+      display: flex;
+      align-items: center;
+      background-color: $clr-neutral-100;
+      background-color: rgb(247, 247, 247);
+      border-radius: 6px;
+      box-shadow: $register-box;
+
+      > * {
+        position: absolute;
+      }
+
+      .placeholder {
+        font-size: 14px;
+        transform: translateY(-2%);
+        transition: all 0.3s ease;
+        letter-spacing: 1.2px;
+      }
+
+      input {
+        inset: 0;
+        left: 1.2rem;
+        border: none;
+        z-index: 1000;
+        background: none;
+        letter-spacing: 1.2px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      img {
+        width: 26px;
+        right: 0.8rem;
+      }
+    }
+
+    > :first-child input:focus {
+      top: 1rem;
+    }
+
+    > :first-child.hasValue input:focus ~,
+    > :first-child input:focus ~ {
+      .placeholder {
+        transform: translateY(-10px);
+        font-size: 8px;
+      }
+    }
+
+    > :first-child.hasValue {
+      .placeholder {
+        transform: translateY(-10px);
+        font-size: 8px;
+      }
+
+      input {
+        top: 1rem;
+      }
+    }
+
+    .err-reg {
+      color: $clr-err-500;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      margin-left: 1rem;
+      margin-top: 0.2rem;
+      opacity: 0;
+    }
+  }
+
+  .box.warning {
+    .err-reg {
+      opacity: 1;
+    }
+
+    > :first-child {
+      border: 1.5px solid $clr-err-500;
+    }
+  }
+}

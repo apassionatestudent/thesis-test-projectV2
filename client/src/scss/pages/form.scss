@@ -18,8 +18,8 @@ button {
   cursor: pointer;
 }
 
-main {
-  min-height: 100vh;
+.login {
+  min-height: 80vh;
   display: grid;
   place-items: center;
 }
@@ -33,17 +33,18 @@ main {
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   border-radius: 12px;
   font-family: var(--normal-font);
-  color: var(--clr-secondary);
-  background-color: var(--clr-neutral200);
+  color: $clr-neutral-500;
+
+  // remove
+  background-color: $clr-neutral-100;
 
   header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.6rem;
 
     h1 {
       font-size: 34px;
       letter-spacing: 4px;
-      margin-bottom: 0.2rem;
       line-height: 1;
       font-family: "font1";
       margin-bottom: 0.8rem;
@@ -59,6 +60,8 @@ main {
   > :nth-child(2) {
     display: none;
   }
+
+  /*
 
   .input-section {
     img {
@@ -79,9 +82,9 @@ main {
   .password-err,
   .username-err {
     margin-left: 0.4rem;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
     font-size: 11px;
-    color: var(--err);
+    color: $clr-err-500;
     word-spacing: 0.3rem;
     letter-spacing: 1px;
     height: 0.9rem;
@@ -107,7 +110,7 @@ main {
   }
 
   .username {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 
     .err {
       opacity: 1;
@@ -127,7 +130,7 @@ main {
   .password.warning,
   .username.warning {
     > :first-child {
-      border: 1.5px solid var(--err);
+      border: 1.5px solid $clr-err-500;
 
       &:focus-within {
         border: 1.5px solid var(--clr-secondary);
@@ -137,7 +140,7 @@ main {
 
   .password.warning {
     > :first-child {
-      border: 1.5px solid var(--err);
+      border: 1.5px solid $clr-err-500;
     }
   }
 
@@ -158,15 +161,17 @@ main {
       display: flex;
     }
   }
+  */
 
   button {
     width: 100%;
     padding: 0.6rem;
     border: none;
-    margin: 2.4rem 0 1.4rem 0;
+    margin: 2rem 0 1rem 0;
     font-family: var(--medium);
     letter-spacing: 1.4px;
     background-color: var(--clr-primary);
+    background-color: $clr-primary-800;
     color: white;
     border-radius: 4px;
   }
@@ -176,8 +181,112 @@ main {
 
     a {
       text-decoration: none;
-      color: var(--clr-primary);
+      color: $clr-primary-800;
       font-family: var(--medium);
+    }
+  }
+
+  .remember-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.4rem;
+    margin-top: 1rem;
+    > div {
+      gap: 0.5rem;
+      display: flex;
+    }
+  }
+}
+
+.form-container {
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .box.input {
+    > :first-child {
+      position: relative;
+      padding: 1.5rem 1.2rem;
+      border: 1.5px solid transparent;
+      display: flex;
+      align-items: center;
+      background-color: $clr-neutral-100;
+      background-color: rgb(247, 247, 247);
+      border-radius: 6px;
+      box-shadow: $register-box;
+
+      > * {
+        position: absolute;
+      }
+
+      .placeholder {
+        font-size: 14px;
+        transform: translateY(-2%);
+        transition: all 0.3s ease;
+        letter-spacing: 1.2px;
+      }
+
+      input {
+        inset: 0;
+        left: 1.2rem;
+        border: none;
+        z-index: 1000;
+        background: none;
+        letter-spacing: 1.2px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      img {
+        width: 26px;
+        right: 0.8rem;
+      }
+    }
+
+    > :first-child input:focus {
+      top: 1rem;
+    }
+
+    > :first-child.hasValue input:focus ~,
+    > :first-child input:focus ~ {
+      .placeholder {
+        transform: translateY(-10px);
+        font-size: 8px;
+      }
+    }
+
+    > :first-child.hasValue {
+      .placeholder {
+        transform: translateY(-10px);
+        font-size: 8px;
+      }
+
+      input {
+        top: 1rem;
+      }
+    }
+
+    .err-reg {
+      color: $clr-err-500;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      margin-left: 1rem;
+      margin-top: 0.2rem;
+      opacity: 0;
+    }
+  }
+
+  .box.warning {
+    .err-reg {
+      opacity: 1;
+    }
+
+    > :first-child {
+      border: 1.5px solid $clr-err-500;
     }
   }
 }
@@ -189,8 +298,10 @@ main {
     align-items: center;
     justify-content: center;
     // padding 4 dapat
+    padding: 2rem;
     padding-left: var(--form-padding);
     padding-right: var(--form-padding);
+
     max-width: 900px;
     // gap: 3rem;
     gap: var(--form-gap);
@@ -208,7 +319,7 @@ main {
 
     h2 {
       font-size: 26px;
-      color: black;
+      color: $clr-neutral-900;
       font-family: var(--bold);
       margin-bottom: 2rem;
     }

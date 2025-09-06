@@ -1,0 +1,181 @@
+@forward "../global/index";
+@use "../util" as *;
+
+.calendar {
+  padding: 2rem 1.5rem;
+  background-color: $clr-neutral-50;
+  width: min(80%, 450px);
+  border-radius: 14px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  color: $clr-neutral-900;
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 1rem;
+  }
+
+  .options {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 2.3rem;
+  }
+
+  .days,
+  .weeks {
+    font-weight: $medium;
+    font-size: 11.3px;
+  }
+
+  select {
+    background-color: $clr-neutral-100;
+    text-align-last: left;
+    padding: 0.5rem 1.2rem;
+    width: 150px;
+    letter-spacing: 1.2px;
+
+    &:focus-within {
+      outline: none;
+    }
+
+    option {
+      padding: 2rem 0;
+      border: none;
+    }
+
+    border-radius: 4px;
+    border: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("../../assets/icons/chevron-down.png");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 20px;
+
+    &.select-year {
+      width: 100px;
+    }
+  }
+
+  select.active {
+    background-image: url("../../assets/icons/chevron-up.png");
+  }
+
+  &-wrapper {
+    position: fixed;
+    inset: 0;
+    display: none;
+    place-items: center;
+    backdrop-filter: blur(8px);
+    z-index: 20000;
+    background-color: rgba(0, 0, 0, 0.577);
+  }
+
+  .empty {
+    // border: 1px solid green;
+  }
+
+  span {
+    transition: 1s;
+    text-decoration: none;
+  }
+
+  .selected span {
+    text-underline-offset: 2px;
+    color: $clr-primary-300;
+    font-family: $bold;
+    text-decoration: underline;
+  }
+
+  .weeks {
+    display: flex;
+    margin-bottom: 1rem;
+    letter-spacing: 1.15px;
+    margin-top: 2rem;
+
+    > * {
+      flex: 1;
+      text-align: center;
+    }
+
+    > :first-child {
+      // text-align: left;
+    }
+
+    > :last-child {
+      // text-align: right;
+    }
+  }
+
+  .days {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20px 20px 20px 20px 20px 20px;
+    text-align: center;
+    align-items: start;
+    gap: 1rem 0.4rem;
+    font-size: 13px;
+    height: 180px;
+
+    letter-spacing: 1.15px;
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  button {
+    width: 100%;
+    background-color: $clr-primary-800;
+    color: $clr-neutral-50;
+    padding: 0.7rem 0.5rem;
+
+    margin-top: 3rem;
+    border-radius: 5px;
+    box-shadow: $register-box;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+  }
+
+  & {
+    position: relative;
+  }
+
+  .month-icon {
+    top: 0;
+    position: absolute;
+    width: 100px;
+    top: 1.5rem;
+    right: 2rem;
+
+    .wrapper-icon {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 50px;
+      text-align: center;
+      position: absolute;
+      top: 1.3rem;
+      width: 29px;
+      width: 100%;
+    }
+  }
+}
+
+.calendar {
+  &-wrapper.active {
+    display: grid;
+  }
+
+  &-wrapper.active.opened {
+    display: none;
+  }
+}

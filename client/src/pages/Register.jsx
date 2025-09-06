@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
-import profile from "../../src/assets/icons/user-circle.png";
+const path = "../../src/assets/icons";
+import profile from "../../src/assets/icons/user-plus.svg";
+import email from "../../src/assets/icons/mail.svg";
+import phone from "../../src/assets/icons/smartphone.svg";
+import map from "../../src/assets/icons/map.svg";
 import "../scss/pages/register.scss";
+import Calendar from "../components/Calendar";
+import "../scss/components/_calendar.scss";
+import calendarIcon from "../assets/icons/calendar.png";
 
 function Register() {
+  const [modal, setModal] = useState(false);
   const [reg, setReg] = useState({
     firstName: "",
     lastName: "",
@@ -13,7 +21,12 @@ function Register() {
     nationality: "",
   });
 
-  useEffect(() => {}, [reg]);
+  const handleModal = () => {
+    const calendar = document.querySelector(".calendar-wrapper");
+
+    calendar.classList.add("active");
+    setModal(true);
+  };
 
   const handleFloat = (e) => {
     const value = e.target.value;
@@ -37,6 +50,11 @@ function Register() {
     console.log(reg);
   };
 
+  const handleReg = (e) => {
+    e.preventDefault();
+    console.log(reg);
+  };
+
   /*
 
   - First Name 
@@ -50,10 +68,26 @@ function Register() {
   - Nationality 
   
   */
+
   return (
     <main className="register-account wrapper">
       <div>
-        <section></section>
+        <section>
+          <header>
+            <h3>JOIN FOR FREE</h3>
+            <h1>
+              Lorem, ipsum dolor sit amet consectetur a Quasi!
+              <span> Lorem, ipsum.</span>
+              dipisicing elit.
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Nesciunt, magni.
+            </p>
+
+            <button>Explore more</button>
+          </header>
+        </section>
         <form>
           <h1>Create new Account</h1>
           <div className="inputs">
@@ -95,7 +129,7 @@ function Register() {
                   onChange={handleChange}
                   name="email"
                 />
-                <img src={profile} alt="" />
+                <img src={email} alt="" />
 
                 <div className="placeholder">Email</div>
               </div>
@@ -110,19 +144,25 @@ function Register() {
                   onChange={handleChange}
                   name="phone"
                 />
-                <img src={profile} alt="" />
+                <img src={phone} alt="" />
 
                 <div className="placeholder">Phone number</div>
               </div>
               <div className="err-reg">Required</div>
             </div>
 
-            <div className="box">
-              <input type="date" name="dob" />
+            <div className="box dbo">
+              <button type="button" onClick={handleModal}>
+                <label>Date of Birth</label>
+                <img src={calendarIcon} alt="" />
+              </button>
+              <input type="date" name="dob" onClick={handleModal} />
               <div className="err-reg">Invalid date</div>
+
+              <Calendar modal={modal} setModal={setModal} setReg={setReg} />
             </div>
 
-            <div className="box input">
+            <div className="box input ">
               <div>
                 <input
                   type="text"
@@ -130,14 +170,14 @@ function Register() {
                   onChange={handleChange}
                   name="address"
                 />
-                <img src={profile} alt="" />
+                <img src={map} alt="" />
 
                 <div className="placeholder">Address</div>
               </div>
               <div className="err-reg">Required</div>
             </div>
 
-            <div className="box">
+            <div className="box nationality">
               <label htmlFor="nationality">Nationality:</label>
 
               <select id="nationality">
@@ -146,6 +186,14 @@ function Register() {
                 <option value="American">American</option>
               </select>
             </div>
+
+            <p className="login-q">
+              Already have an account? <a href="#">Login</a>
+            </p>
+
+            <button className="btn" onClick={(e) => handleReg(e)}>
+              Register
+            </button>
           </div>
         </form>
       </div>

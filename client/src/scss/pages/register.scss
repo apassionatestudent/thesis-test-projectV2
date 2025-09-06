@@ -3,7 +3,10 @@
 
 body {
   background-color: $clr-neutral-50;
-  min-height: 300vh;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 $register-box: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -20,23 +23,31 @@ border {
   box-sizing: border-box;
 }
 
+.register-account section {
+  display: none;
+}
+
 .register-account {
   display: grid;
   place-items: center;
   min-height: 80vh;
   color: $clr-neutral-500;
+  padding: 2rem 0;
 
   form {
     h1 {
       margin-bottom: 1.4rem;
       color: $clr-neutral-900;
     }
+
+    width: 96%;
+    margin-inline: auto;
   }
 
   > div {
     width: 84%;
     max-width: 2000px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
 
   .inputs {
@@ -54,7 +65,7 @@ border {
       align-items: center;
       background-color: $clr-neutral-100;
       background-color: rgb(247, 247, 247);
-      border-radius: 6px;
+      border-radius: 8px;
       box-shadow: $register-box;
 
       > * {
@@ -72,7 +83,7 @@ border {
         inset: 0;
         left: 1.2rem;
         border: none;
-        z-index: 1000;
+        z-index: 900;
         background: none;
         letter-spacing: 1.2px;
 
@@ -82,7 +93,7 @@ border {
       }
 
       img {
-        width: 26px;
+        width: 28px;
         right: 0.8rem;
       }
     }
@@ -127,6 +138,160 @@ border {
 
     > :first-child {
       border: 1.5px solid $clr-err-500;
+    }
+  }
+
+  .btn {
+    background-color: $clr-primary-800;
+    color: $clr-neutral-50;
+    letter-spacing: 2px;
+    font-family: $medium;
+    padding: 0.9rem 0;
+    border-radius: 8px;
+    margin-top: 1.3rem;
+  }
+
+  .login-q {
+    text-align: center;
+    margin-top: 2rem;
+
+    a {
+      margin-left: 0.4rem;
+      color: $clr-primary-300;
+    }
+  }
+
+  .box.dbo {
+    input[type="date"] {
+      display: none;
+    }
+
+    > button {
+      position: relative;
+      height: 3.5rem;
+      width: 100%;
+      box-shadow: $register-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      background: rgb(247, 247, 247);
+
+      label {
+        position: absolute;
+        left: 1rem;
+        color: $clr-neutral-500;
+      }
+
+      img {
+        right: 1rem;
+        position: absolute;
+        width: 20px;
+      }
+    }
+
+    .err-reg {
+      opacity: 0;
+    }
+  }
+
+  .box.nationality {
+    select {
+      width: 60%;
+      display: block;
+      background-color: rgb(247, 247, 247);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-top: 0.2rem;
+      border: none;
+      color: $clr-neutral-500;
+
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      background-image: url("../../assets/icons/chevron-down.png");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 20px;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .register-account {
+    .inputs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .inputs {
+      column-gap: 1.4rem;
+      > * {
+        flex-grow: 1;
+        flex-basis: 700px;
+      }
+
+      > :nth-child(3),
+      > :nth-child(4),
+      > :nth-child(1),
+      > :nth-child(2) {
+        width: 50%;
+        flex-basis: 200px;
+      }
+    }
+  }
+
+  .register-account section {
+    display: block;
+    color: $clr-neutral-500;
+
+    h3 {
+      margin-bottom: 0.5rem;
+      font-size: 13px;
+    }
+
+    h1 {
+      color: $clr-neutral-900;
+      font-size: 35px;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      word-spacing: 6px;
+    }
+
+    span {
+      color: $clr-primary-800;
+    }
+
+    p {
+      margin: 1rem 0 2rem 0;
+      width: 80%;
+      font-family: $normal-font;
+    }
+
+    button {
+      width: min(40%, 160px);
+      background-color: $clr-primary-900;
+      color: $clr-neutral-100;
+      padding: 0.8rem;
+      border-radius: 6px;
+    }
+  }
+
+  .register-account > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    > * {
+      flex: 1;
+    }
+
+    > :first-child {
+      flex: 0 1 480px;
+    }
+
+    > :nth-child(2) {
+      flex: 0 1 480px;
     }
   }
 }
